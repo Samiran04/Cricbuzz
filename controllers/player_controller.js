@@ -3,7 +3,7 @@ const Player = require('../models/player');
 module.exports.enterData = async function(req, res){
     try{
 
-        let player = Player.create({
+        let player = await Player.create({
             name: req.body.name,
             born: req.body.born,
             birthplace: req.body.birthplace,

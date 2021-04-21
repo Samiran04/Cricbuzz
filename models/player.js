@@ -31,6 +31,18 @@ const playerSchema = new mongoose.Schema({
     },
     img: {
         type: String
+    },
+    t20: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Stats'
+    },
+    odi: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Stats'
+    },
+    test: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Stats'
     }
 }, {timestamps: true});
 
