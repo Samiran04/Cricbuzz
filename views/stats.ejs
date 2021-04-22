@@ -25,7 +25,40 @@
 </div>
 
 <div>
-    <% if(locals.odi){ %>
-        <a href="/stats/destroy-stats/<%= locals.odi._id %>">Delete</a>
-    <% } %>
+    <div>
+        <% if(locals.t20){ %>
+            <h2>T20</h2>
+            <a href="/stats/destroy-stats/<%= locals.t20._id %>">Delete</a>
+            <p><b>Mathes:</b><%= t20.matches %></p>
+            <p><b>Innings:</b><%= t20.innings %></p>
+            <p><b>Runs:</b><%= t20.runs %></p>
+            <p><b>50s:</b><%= t20.fifties %></p>
+            <p><b>100s:</b><%= t20.hundreds %></p>
+            <p><b>Average:</b><%= t20.average %></p>
+        <% } %>
+    </div>
+    <div>
+        <% if(locals.odi){ %>
+            <h2>Odi</h2>
+            <a href="/stats/destroy-stats/<%= locals.odi._id %>">Delete</a>
+            <p><b>Mathes:</b><%= odi.matches %></p>
+            <p><b>Innings:</b><%= odi.innings %></p>
+            <p><b>Runs:</b><%= odi.runs %></p>
+            <p><b>50s:</b><%= odi.fifties %></p>
+            <p><b>100s:</b><%= odi.hundreds %></p>
+            <p><b>Average:</b><%= odi.average %></p>
+        <% } %>
+    </div>
+    <div>
+        <% if(locals.test){ %>
+            <h2>Test</h2>
+            <a href="/stats/destroy-stats/<%= locals.test._id %>">Delete</a>
+            <p><b>Mathes:</b><%= test.matches %></p>
+            <p><b>Innings:</b><%= test.innings %></p>
+            <p><b>Runs:</b><%= test.runs %></p>
+            <p><b>50s:</b><%= test.fifties %></p>
+            <p><b>100s:</b><%= test.hundreds %></p>
+            <p><b>Average:</b><%= test.average %></p>
+        <% } %>
+    </div>
 </div>
