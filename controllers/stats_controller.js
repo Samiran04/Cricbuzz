@@ -26,19 +26,20 @@ module.exports.createStats = async function(req, res){
                 hundreds: req.body.hundreds,
                 doublehundreds: req.body.doublehundreds,
                 triplehundreds: req.body.triplehundreds,
-                fourhundreds: req.body.fourhundreds
+                fourhundreds: req.body.fourhundreds,
+                average: 0
             })
 
-            if(req.body.name == 'odi')
+            if(req.body.name == 'Odi')
             {
                 player.odi = stats._id;
             }
-            else if(req.body.name == 'test')
+            else if(req.body.name == 'Test')
             {
-                player.odi = stats._id;
+                player.test = stats._id;
             }
             else{
-                player.odi = stats._id;
+                player.t20 = stats._id;
             }
 
             let actualInnings = stats.innings - stats.notout;
@@ -53,6 +54,57 @@ module.exports.createStats = async function(req, res){
         }
     }
     catch(err){
+        console.log(err);
+        return res.json(500, {
+            message: 'Error in Code stats'
+        });
+    }
+}
+
+module.exports.destroyStats = async function(req, res){
+    try{
+        let stats = await Stats.findByIdAndRemove(req.params.Id);
+
+        if(stats.name == "Odi")
+        {
+            await Player.findByIdAndUpdate(stats.player, {
+                $unset: {odi: stats._id}
+            });
+        }
+        else if(stats.name == "Test")
+        {
+            await Player.findByIdAndUpdate(stats.player, {
+                $unset: {test: stats._id}
+            });
+        }
+        else
+        {
+            await Player.findByIdAndUpdate(stats.player, {
+                $unset: {t20: stats._id}
+            });
+        }
+
+        return res.redirect('back');
+    }catch(err){
+        console.log(err);
+        return res.json(500, {
+            message: 'Error in Code stats'
+        });
+    }
+}
+
+module.exports.statsPage = async function(req, res){
+    try{
+
+        let player = await Player.findById(req.params.Id).populate('t20').populate('odi').populate('test');
+
+        return res.render('stats', {
+            Id: req.params.Id,
+            odi: player.odi,
+            test: player.test,
+            t20: player.t20
+        })
+    }catch(err){
         console.log(err);
         return res.json(500, {
             message: 'Error in Code stats'

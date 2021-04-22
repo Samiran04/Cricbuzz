@@ -1,0 +1,31 @@
+<h1>Stats Page</h1>
+
+<div>
+    <form action="/stats/create-stats" method="POST">
+        <input type="hidden" name="Id" value="<%= locals.Id %>">
+        <input type="text" name="name" placeholder="eg.Odi">
+        <input type="number" name="matches" placeholder="Matches">
+        <input type="number" name="innings" placeholder="Innings">
+        <input type="number" name="runs" placeholder="Runs">
+        <input type="number" name="balls" placeholder="Balls">
+        <input type="number" name="highest" placeholder="Highest Score">
+        <input type="number" name="sr" placeholder="Strike Rate">
+        <input type="number" name="notout" placeholder="Not Outs">
+        <input type="number" name="fours" placeholder="4s">
+        <input type="number" name="sixes" placeholder="6s">
+        <input type="number" name="ducks" placeholder="0s">
+        <input type="number" name="fifties" placeholder="50s">
+        <input type="number" name="hundreds" placeholder="100s">
+        <input type="number" name="doublehundreds" placeholder="200s">
+        <input type="number" name="triplehundreds" placeholder="300s">      
+        <input type="number" name="fourhundreds" placeholder="400s">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div>
+    <% if(locals.odi){ %>
+        <a href="/stats/destroy-stats/<%= locals.odi._id %>">Delete</a>
+    <% } %>
+</div>

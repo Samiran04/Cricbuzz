@@ -22,3 +22,19 @@ module.exports.enterData = async function(req, res){
         });
     }
 }
+
+module.exports.searchPlayer = async function(req, res){
+    try{
+        let players = await Player.find({name: req.body.name});
+
+        res.locals.players = players;
+
+        return res.render('author');
+    }catch(err)
+    {
+        console.log(err);
+        return res.json(500, {
+            message: 'Error in Search player code'
+        });
+    }
+}
