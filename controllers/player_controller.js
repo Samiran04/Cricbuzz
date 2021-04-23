@@ -1,4 +1,5 @@
 const Player = require('../models/player');
+const Team = require('../models/team');
 
 module.exports.enterData = async function(req, res){
     try{
@@ -6,11 +7,16 @@ module.exports.enterData = async function(req, res){
         let player = await Player.create({
             name: req.body.name,
             born: req.body.born,
+            team: req.body.team,
             birthplace: req.body.birthplace,
             nickname: req.body.nickname,
             role: req.body.role,
             battingstyle: req.body.battingstyle,
             bowlingstyle: req.body.bowlingstyle
+        });
+
+        await Team.findOneAndUpdate({name: req.body.team}, {
+            $push: {players: player._id}
         });
 
         return res.redirect('back');
