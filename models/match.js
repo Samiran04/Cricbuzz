@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const matchSchema = new mongoose.Schema({
+    date: {
+        type: Date,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -26,6 +30,9 @@ const matchSchema = new mongoose.Schema({
     },
     batting1: [
         {
+            name: {
+                type: String
+            },
             R: {
                 type: Number
             },
@@ -42,6 +49,9 @@ const matchSchema = new mongoose.Schema({
     ],
     batting2: [
         {
+            name: {
+                type: String
+            },
             R: {
                 type: Number
             },
@@ -58,6 +68,9 @@ const matchSchema = new mongoose.Schema({
     ],
     bowling1: [
         {
+            name: {
+                type: String
+            },
             R: {
                 type: Number
             },
@@ -71,6 +84,9 @@ const matchSchema = new mongoose.Schema({
     ],
     bowling2: [
         {
+            name: {
+                type: String
+            },
             R: {
                 type: Number
             },

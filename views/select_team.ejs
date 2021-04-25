@@ -1,0 +1,18 @@
+<form action="/match/get-players" method="POST">
+    <input type="hidden" name="name1" value="<%= team1.name %>">
+    <input type="hidden" name="name2" value="<%= team2.name %>">
+    
+    <div>
+        <% for(player of team1.players){ %>
+            <label><input type="checkbox" name="team1" value="<%= player._id %>"><%= player.name %></label>
+        <% } %>
+    </div>
+
+    <div>
+        <% for(player of team2.players){ %>
+            <label><input type="checkbox" name="team2" value="<%= player._id %>"><%= player.name %></label>
+        <% } %>
+    </div>
+
+    <input type="submit" value="Submit">
+</form>
