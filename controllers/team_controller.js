@@ -4,6 +4,7 @@ const Player = require('../models/player');
 module.exports.createTeam = async function(req, res){
     try{
         let team = await Team.create({
+            is_actual: true,
             name: req.body.name,
             players: []
         });

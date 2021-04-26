@@ -32,8 +32,10 @@ module.exports.enterData = async function(req, res){
 module.exports.searchPlayer = async function(req, res){
     try{
         let players = await Player.find({name: req.body.name});
+        let teams = await Team.find({});
 
         res.locals.players = players;
+        res.locals.teams = teams;
 
         return res.render('author');
     }catch(err)

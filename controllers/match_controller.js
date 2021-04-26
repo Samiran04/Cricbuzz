@@ -4,8 +4,8 @@ const Team = require('../models/team');
 module.exports.getPlayers = async function(req, res){
     try{
         
-        let team1 = await Team.create({name: req.body.name1, players: req.body.team1});
-        let team2 = await Team.create({name: req.body.name2, players: req.body.team2});
+        let team1 = await Team.create({is_actual: false, name: req.body.name1, players: req.body.team1});
+        let team2 = await Team.create({is_actual: false, name: req.body.name2, players: req.body.team2});
 
         let match_name = req.body.name1 + req.body.name2 + new Date().toString();
 

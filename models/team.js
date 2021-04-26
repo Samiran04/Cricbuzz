@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const teamSchema = new mongoose.Schema({
+    is_actual: {
+        type: Boolean,
+        required: true
+    },
     name: {
         type: String,
         required: true

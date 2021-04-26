@@ -42,16 +42,22 @@
     <h2>Select Teams for Match</h2>
 
     <form action="/match/select-players" method="POST">
-        <select name="name1">
-            <% for(team of teams){ %>
-                <option value="<%= team.name %>"><%= team.name %></option>
-            <% } %>
-        </select>
-        <select name="name2">
-            <% for(team of teams){ %>
-                <option value="<%= team.name %>"><%= team.name %></option>
-            <% } %>
-        </select>
+        <% if(locals.teams){ %>
+            <select name="name1">
+                <% for(team of teams){ %>
+                    <% if(team.is_actual){ %>
+                        <option value="<%= team.name %>"><%= team.name %></option>
+                    <% } %>
+                <% } %>
+            </select>
+            <select name="name2">
+                <% for(team of teams){ %>
+                    <% if(team.is_actual){ %>
+                        <option value="<%= team.name %>"><%= team.name %></option>
+                    <% } %>
+                <% } %>
+            </select>
+        <% } %>
 
         <input type="submit" value="Submit">
     </form>
