@@ -1,0 +1,32 @@
+<div>
+    <h1>Set Score</h1>
+    <form action="">
+        <select name="actions" id="action-box">
+            <option value="6">6</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+            <option value="wd">wd</option>
+            <option value="nb">nb</option>
+            <option value="b">b</option>
+            <option value="w">w</option>
+            <option value="r">r</option>
+        </select>
+        <input type="submit" value="Submit" id="submit-button">
+    </form>
+
+    <div>
+        <div><span><%= locals.match.score1 %>-</span><%= locals.match.wkts1 %><span></span></div>
+        <div><span><%= locals.match.score2 %>-</span><%= locals.match.wkts2 %><span></span></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+    <script src="/js/scoring.js"></script>
+
+    <script>
+        new Scoring('<%= match.name %>', 'action-box', 'submit-button', '<%= locals.bat %>', '<%= locals.toss %>');
+    </script>
+</div>
